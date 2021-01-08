@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+		<title>{{ title }}</title>
+        
+        <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="manifest" href="manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+        <script>
+            $(document).ready(function() {
+                function j_cmd(data, fun)
+                {
+                    $.post('/ajax', data, fun);
+                }
+
+                $('button.test').click(function() {
+                    j_cmd({
+                            'data' : 'test'
+                        }, function(ret){
+                            console.log(ret);
+                        })
+                })
+
+                $('button.command').click(function() {
+                    j_cmd({
+                            'data' : 'command'
+                        }, function(ret){
+                            console.log(ret);
+                        })
+                })
+
+                $('button.takeoff').click(function() {
+                    j_cmd({
+                            'data' : 'takeoff'
+                        }, function(ret){
+                            console.log(ret);
+                        })
+                })
+                
+                $('button.land').click(function() {
+                    j_cmd({
+                            'data' : 'land'
+                        }, function(ret){
+                            console.log(ret);
+                        })
+                })
+                
+            })
+        </script>
+    </head>
+
+    <body>
+		<h1>Welcome to Tello Web Control Dashboard</h1>
+		<h2>The date and time on the server is: {{ time }}</h2>
+		<button class='test'>Test</button>
+        <button class='command'>START</button>
+        <button class='takeoff'>Takeoff</button>
+		<button class='land'>Land</button>
+        <button class='#'>Not In Use</button>
+    </body>
+</html>
